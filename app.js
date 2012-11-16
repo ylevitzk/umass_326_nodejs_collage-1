@@ -1,16 +1,19 @@
 
 /**
- * Module dependencies.
+ *  Module dependencies.
  */
+var express     = require('express')
+  , routes      = require('./routes')
+  , modules     = require('./modules')
+  , controllers = require('./controllers')
+  , http        = require('http')
+  , path        = require('path')
+  , sio         = require('socket.io');
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path')
-  , sio = require('socket.io');
-
+/**
+ *  Configuration and Middleware.
+ */
 var app = express();
-
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -29,6 +32,9 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+/**
+ *  Routes.
+ */
 app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
