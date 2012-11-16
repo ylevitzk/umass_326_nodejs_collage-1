@@ -1,4 +1,3 @@
-
 /**
  *  Module dependencies.
  */
@@ -13,6 +12,8 @@ var express     = require('express')
 /**
  *  Configuration and Middleware.
  */
+ 
+ //Edit 
 var app = express();
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
